@@ -13,6 +13,7 @@
 apps=(Spotify Music)
 script=$0
 
+
 BitBarDarkMode=$(osascript -e "tell application \"System Events\" to tell appearance preferences
                 get properties
         	            set currentValue to dark mode
@@ -32,6 +33,8 @@ else
 fi
 
 function geek_visible {
+	# If you use GeekTool, you can modify these parameters to have the album image appear on your desktop
+	#
 	#/usr/bin/osascript -e "try
 	#	tell application \"GeekTool Helper\"
 	#	set image url of image geeklet named \"NowPlaying\" to \"file://$2\"
@@ -70,17 +73,7 @@ if [ "$1" = "play" ] || [ "$1" = "pause" ]; then
 	osascript -e "tell application \"$2\" to $1"
 	exit
 fi
-# next/previous
-if [ "$1" = "next" ] || [ "$1" = "previous" ]; then
-	osascript -e "tell application \"$2\" to $1 track"
-	# tell spotify to hit "Previous" twice so it actually plays the previous track
-	# instead of just starting from the beginning of the current one
-	if [ "$playing" = "Spotify" ] && [ "$1" = "previous" ]; then
-		osascript -e "tell application \"$2\" to $1 track"
-	fi
-	osascript -e "tell application \"$2\" to play"
-	exit
-fi
+
 }
 
 function write_image {
@@ -169,10 +162,11 @@ function get_track_info {
 }
 
 function output_menu_info {
+
 	echo "---"
-	echo "◼︎  Stop| color=$COLOR0 size=14 bash='$script' param1=pause param2=$app refresh=true terminal=false"
-	echo ">> Next | color=$COLOR0 size=14 bash='$script' param1=next param2=$app refresh=true terminal=false"
-	echo "<< Previous | color=$COLOR0 size=14 bash='$script' param1=previous param2=$app refresh=true terminal=false"
+
+	echo "$artist | color=$COLOR2"
+	echo "$album | size=14 color=$COLOR3 length=30"
 
 	#output the track and artist
 	echo "---"
@@ -181,9 +175,8 @@ function output_menu_info {
 	    echo "| image=$base64img bash='$0' param1=open terminal=false"
 	fi
 
-	echo "$track | color=$COLOR1"
-	echo "$artist | color=$COLOR2"
-	echo "$album | size=14 color=$COLOR3 length=30"
+
+
 }
 
 ##########################################################################################
@@ -218,7 +211,6 @@ if [[ "$playerState" == "playing" ]] || [[ "$playerState" == "paused" ]]; then
 	geek_visible "true" $imgFile
 
 else
-
 	echo " | color=$COLOR0 size=14"
 	echo "---"
 	echo "> Play | color=$COLOR0 size=14 bash='$0' param1=play param2=$app refresh=true terminal=false"
