@@ -6,7 +6,7 @@ This repository contains two plugins for [BitBar](https://getbitbar.com/).
 
 The plugin displays tasks from Omnifocus, divided into categories, sorted by date. Default categories are Past due, Now (within 2 days), Soon (within a month), and Home. They can be modified. Colors can be assigned to each category. It uses a combination of Python and AppleScript. There's a script version for Omnifocus 2 and for Omnifocus 3.
 
-![screenshot](https://github.com/ZBiener/BitBar-Plugins/blob/master/images/OFT-dropdown.jpg){:height="50%" width="50%"}
+![screenshot](https://github.com/ZBiener/BitBar-Plugins/blob/master/images/OFT-dropdown.jpg)
 
 **Click** on a task in the dropdown menu to open it in Omnifocus, with its note expanded (it is has one). 
 
