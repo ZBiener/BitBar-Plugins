@@ -2,7 +2,7 @@
 
 This repository contains two plugins for [BitBar](https://getbitbar.com/).
 
-## OmniTasks4BitBar.py
+## OmniTasks4BitBar.sh
 
 The plugin displays tasks from Omnifocus, divided into categories, sorted by date. Default categories are Past due, Now (within 2 days), Soon (within a month), and Home. They can be modified. Colors can be assigned to each category. It uses a combination of Python and AppleScript. There's a script version for Omnifocus 2 and for Omnifocus 3.
 
@@ -33,3 +33,9 @@ Colors and main display categories can be modified through the 'categoryDefiniti
                             task.name, task.duedate, task.project, task.tag.
                             See script for examples.
 
+
+## AppleMusic-Spotify-NowPlaying.10s.sh
+
+Display currently playing track information in the menubar, and a dropdown menu of the associated album cover image. Works with both Spotify and Apple Music. (Apple Music is only confirmed for local files, I don't have the subscription service for the necessary customization.)
+
+<img src="https://github.com/ZBiener/BitBar-Plugins/blob/master/images/NP-dropdown.jpg" alt="Screenshot" width="80%">
